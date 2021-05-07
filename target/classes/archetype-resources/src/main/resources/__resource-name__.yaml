@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${artifactId}-deployment
+  namespace: ${artifactId}
+  labels:
+    event: ${artifactId}
+    name-space: ${artifactId}
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      event: ${artifactId}
+  template:
+    metadata:
+      labels:
+        event: ${artifactId}
+    spec:
+      containers:
+        - image: jcpuerta1/archetype:latest
+          name: ${artifactId}
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: JAVA_OPTS
+            value: '-Xmx512m -Xmx1024m -XX:+UseG1GC'
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 200m
+            requests:
+              memory: 512Mi
+              cpu: 200m
+          ports:
+            - containerPort: 8080         
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${artifactId}-service
+  namespace: ${artifactId}
+  labels:
+    event: ${artifactId}
+    name-space: ${artifactId}
+spec:
+  type: NodePort
+  ports:
+    -
+      port: 8080
+      targetPort: 8080 
+      nodePort: 32108
+  selector:
+    event: ${artifactId}
