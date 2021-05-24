@@ -2,6 +2,7 @@ package co.com.telefonica.baseapp.ws.ui.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,9 +17,10 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.util.MimeTypeUtils;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import co.com.telefonica.baseapp.ws.ui.model.request.EntityDetailsRequestModel;
-import co.com.telefonica.baseapp.ws.ui.model.request.UpdateEntityDetailsRequestModel;
 import co.com.telefonica.baseapp.ws.ui.model.response.RestEntity;
 
 
@@ -112,7 +114,7 @@ class EntityControllerTest {
 
 	@Test
 	void testUpdateEntity() throws Exception {
-		UpdateEntityDetailsRequestModel entityDetailsUp = new UpdateEntityDetailsRequestModel();
+		EntityDetailsRequestModel entityDetailsUp = new EntityDetailsRequestModel();
 		EntityDetailsRequestModel entityDetails = new EntityDetailsRequestModel();
 		entityDetails.setParameter1("Test 2");
 		entityDetails.setParameter2("test@test2.com");
@@ -133,8 +135,8 @@ class EntityControllerTest {
 		RestEntity response = objectMapper.readValue(contentAsString, RestEntity.class);
 		String entityId = response.getParametro4();
 
-		entityDetailsUp.setParametro1("Test 3");
-		entityDetailsUp.setParametro2("test@test3.com");
+		entityDetailsUp.setParameter1("Test 3");
+		entityDetailsUp.setParameter2("test@test3.com");
 		mvc.perform(MockMvcRequestBuilders.put("/operacion/"+entityId)
 		.content(new ObjectMapper().writeValueAsString(entityDetailsUp))
 		.accept(MimeTypeUtils.APPLICATION_JSON_VALUE)

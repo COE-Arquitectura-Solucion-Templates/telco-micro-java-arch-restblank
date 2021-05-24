@@ -29,7 +29,8 @@ public class CustomHealthIndicator extends AbstractHealthIndicator {
 		
 		 builder.up()
          .withDetail("app", "App ws")
-         .withDetail("sucess", "OK");
+         .withDetail("sucess", "OK")
+         .withDetail("", "");
 		 
 	}	
 }

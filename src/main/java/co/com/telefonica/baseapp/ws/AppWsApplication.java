@@ -23,6 +23,13 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrixDashboard
+/** 
+ * 
+ * Clase iniciadora de una aplicación Spring Boot
+ * @version 1.0.0
+ * @author COEArquitectura@telefonica.com
+ * @since 19/05/2021
+ */
 public class AppWsApplication extends AbstractHealthIndicator {
 
 	@Override
@@ -33,7 +40,10 @@ public class AppWsApplication extends AbstractHealthIndicator {
          .withDetail("sucess", "OK");
 		 
 	}	
-
+	/**
+	 * Metodo principal, corre aplicación en Spring Boot
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(AppWsApplication.class, args);
 	}	
@@ -44,7 +54,7 @@ public class AppWsApplication extends AbstractHealthIndicator {
 	 */
 	@Bean(name = "hystrixRegistrationBean")
 	public ServletRegistrationBean<HystrixMetricsStreamServlet> servletRegistrationBean() {
-	    ServletRegistrationBean<HystrixMetricsStreamServlet> registration = new ServletRegistrationBean<HystrixMetricsStreamServlet>(
+	    ServletRegistrationBean<HystrixMetricsStreamServlet> registration = new ServletRegistrationBean<>(
 	            new HystrixMetricsStreamServlet(), "/hystrix.stream");
 	    registration.setName("hystrixServlet");
 	    registration.setLoadOnStartup(1);
