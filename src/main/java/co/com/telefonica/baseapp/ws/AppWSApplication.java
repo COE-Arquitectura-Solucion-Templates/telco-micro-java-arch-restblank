@@ -1,4 +1,4 @@
-package ${groupId}.ws;
+package co.com.telefonica.baseapp.ws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
@@ -30,7 +30,7 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
  * @author COEArquitectura@telefonica.com
  * @since 19/05/2021
  */
-public class ${artifactId} extends AbstractHealthIndicator {
+public class AppWSApplication extends AbstractHealthIndicator {
 
 	@Override
 	protected void doHealthCheck(Builder builder) throws Exception {
@@ -45,7 +45,7 @@ public class ${artifactId} extends AbstractHealthIndicator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(${artifactId}.class, args);
+		SpringApplication.run(AppWSApplication.class, args);
 	}	
 
 	/**

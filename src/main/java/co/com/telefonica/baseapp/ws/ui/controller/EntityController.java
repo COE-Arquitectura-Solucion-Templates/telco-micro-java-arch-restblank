@@ -220,13 +220,13 @@ public class EntityController {
 			new UtilHeader().processHeader(headers);
 		} catch (Exception exception) {
 			log.error("{$applicationId}", ERROR_HEADER, exception);
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ResponseEntity.badRequest().headers(new UtilHeader().buildHeaderOut(headers)).build();
 		}
 
 		if (collectionMap.containsKey(entityId)) {
 			return new ResponseEntity<>(collectionMap.remove(entityId), HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return ResponseEntity.notFound().headers(new UtilHeader().buildHeaderOut(headers)).build();
 		}
 
 	}

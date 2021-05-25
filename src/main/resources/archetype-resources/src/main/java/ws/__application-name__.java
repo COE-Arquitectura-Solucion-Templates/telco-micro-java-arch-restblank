@@ -23,25 +23,38 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-
-public class {$artifactId} extends AbstractHealthIndicator {
+/** 
+ * 
+ * Clase iniciadora de una aplicación Spring Boot
+ * @version 1.0.0
+ * @author COEArquitectura@telefonica.com
+ * @since 19/05/2021
+ */
+public class ${artifactId} extends AbstractHealthIndicator {
 
 	@Override
 	protected void doHealthCheck(Builder builder) throws Exception {
 		
 		 builder.up()
-         .withDetail("app", "Mobile app ws")
+         .withDetail("app", "App ws")
          .withDetail("sucess", "OK");
 		 
 	}	
-
+	/**
+	 * Metodo principal, corre aplicación en Spring Boot
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		SpringApplication.run({$artifactId}.class, args);
+		SpringApplication.run(${artifactId}.class, args);
 	}	
 
+	/**
+	 * Metodo encargado de generar las trazas para hystrix
+	 * @return ServletRegistrationBean
+	 */
 	@Bean(name = "hystrixRegistrationBean")
-	public ServletRegistrationBean servletRegistrationBean() {
-	    ServletRegistrationBean registration = new ServletRegistrationBean(
+	public ServletRegistrationBean<HystrixMetricsStreamServlet> servletRegistrationBean() {
+	    ServletRegistrationBean<HystrixMetricsStreamServlet> registration = new ServletRegistrationBean<>(
 	            new HystrixMetricsStreamServlet(), "/hystrix.stream");
 	    registration.setName("hystrixServlet");
 	    registration.setLoadOnStartup(1);

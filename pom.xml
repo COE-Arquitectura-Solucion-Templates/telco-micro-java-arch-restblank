@@ -252,5 +252,24 @@
 			</extension>
 		</extensions>
 	</build>
+	
+	 	 <repositories>
+    <repository>
+      <id>maven-group</id>
+      <url>http://10.203.220.37:30777/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
+  
+  <distributionManagement>
+    
+    <repository>
+      <id>maven-releases</id>
+      <url>http://10.203.220.37:30777/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://10.203.220.37:30777/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>

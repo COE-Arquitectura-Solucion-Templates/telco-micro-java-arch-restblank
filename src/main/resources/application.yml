@@ -3,7 +3,19 @@ spring:
   thymeleaf.cache: false
   main.show-banner: false
   ## BD Management
- #App configuration
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+      schema: public
+    url:jdbc: postgresql://localhost:5433/demo_test
+    username: testuser
+    password: abc123
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none 
+#App configuration
 server:
   address: 0.0.0.0
   error:
@@ -45,6 +57,4 @@ entity:
   parameter2NotNull: 'parameter2 cannot be null'
   parameter3NotNull: 'parameter3 cannot be null'
   parameter4NotNull: 'parameter4 cannot be null'
-  parameter4Size: 'parameter4 must be equal or greater than 8 characters and less than 16 characters'
-
- 
+  parameter4Size: 'parameter4 must be equal or greater than 8 characters and less than 16 characters' 
