@@ -62,7 +62,7 @@ public class EntityController {
 	 * @method Este metodo es encargado de mapear la operacion GET
 	 *         /operacion/{parametro1}
 	 **/
-	@GetMapping(path = "/{parameter}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(path = "telefonica/hispam/${variable}/GET/{parameter}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<RestEntity> getParameter(@RequestHeader HttpHeaders headers, @PathVariable String parameter) {
 		log.info("Se esta ejecutando la aplicación");
 

@@ -8,7 +8,7 @@
 
 	<requiredProperties>
 		<requiredProperty key="application-name">
-			<defaultValue>${artifactId}</defaultValue>
+			<defaultValue>ms${artifactId}</defaultValue>
 
 		</requiredProperty>
 

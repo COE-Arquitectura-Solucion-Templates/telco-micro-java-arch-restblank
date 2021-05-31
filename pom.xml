@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>co.com.telefonica.baseapp.ws</groupId>
 	<artifactId>telco-micro-java-arch-restblank</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>telco-micro-java-arch-restblank</name>
 	<description>Blank archetype to Telefonica REST API</description>
 	<packaging>maven-archetype</packaging>
@@ -264,7 +264,7 @@
     
     <repository>
       <id>maven-releases</id>
-      <url>http://10.203.220.37:30777/repository/maven-releases/</url>
+      <url>http://10.203.220.37:30777/repository/maven-snapshots/</url>
     </repository>
     <snapshotRepository>
       <id>nexus-snapshots</id>
