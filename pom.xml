@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>co.com.telefonica.baseapp.ws</groupId>
 	<artifactId>telco-micro-java-arch-restblank</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>telco-micro-java-arch-restblank</name>
 	<description>Blank archetype to Telefonica REST API</description>
 	<packaging>maven-archetype</packaging>
@@ -118,6 +118,34 @@
 		
 		
 		<plugins>
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		<plugin>
+			  <!--groupId>org.dstovall</groupId--> <!-- not available on the central -->
+			  <groupId>com.jolira</groupId>
+			  <artifactId>onejar-maven-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <configuration>
+			        <mainClass>co.com.telefonica.colombia.ws.AplyRechargeAsync</mainClass>
+			        <attachToBuild>true</attachToBuild>
+			        <!-- https://code.google.com/p/onejar-maven-plugin/issues/detail?id=8 -->
+			        <!--classifier>onejar</classifier-->
+			        <filename>${project.artifactId}-${project.version}.jar</filename>
+			      </configuration>
+			      <goals>
+			        <goal>one-jar</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
 
 
 			<plugin>
@@ -266,10 +294,7 @@
       <id>maven-releases</id>
       <url>http://10.203.220.37:30777/repository/maven-snapshots/</url>
     </repository>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://10.203.220.37:30777/repository/maven-snapshots/</url>
-    </snapshotRepository>
+   
   </distributionManagement>
 
 </project>
