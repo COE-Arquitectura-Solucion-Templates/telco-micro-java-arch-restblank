@@ -24,6 +24,8 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
 @EnableCircuitBreaker
 @EnableHystrixDashboard
 
+
+
 /** 
  * 
  * Clase iniciadora de una aplicación Spring Boot
